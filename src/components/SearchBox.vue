@@ -11,7 +11,7 @@ watch(
   search,
   debounce(() => {
     emit('search', search.value)
-  }, 500)
+  }, 1000)
 )
 </script>
 

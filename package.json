@@ -29,6 +29,7 @@
     "prettier": "^3.0.3",
     "sass": "^1.70.0",
     "vite": "^5.0.11",
+    "vite-plugin-mkcert": "^1.17.3",
     "vitest": "^1.2.2"
   }
 }

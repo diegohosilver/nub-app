@@ -3,7 +3,8 @@ import SearchBox from './SearchBox.vue'
 import CurrentWeather from './CurrentWeather.vue'
 import WeatherLoading from './WeatherLoading.vue'
 import useWeather from '@/composables/weather'
-import { ref } from 'vue'
+import useLocation from '@/composables/location'
+import { ref, onMounted } from 'vue'
 import { useWeatherStore } from '@/stores/weather'
 import { storeToRefs } from 'pinia'
 
@@ -11,6 +12,7 @@ const store = useWeatherStore()
 const { ttl } = storeToRefs(store)
 
 const { weather, getWeather } = useWeather()
+const { position, getPosition, positionToString } = useLocation()
 
 const isLoading = ref(true)
 let searchLocation = ''
@@ -25,17 +27,30 @@ async function onSearch(e) {
 
 async function searchWeather() {
   isLoading.value = true
-  await getWeather(searchLocation, 4)
+
+  let lookup = searchLocation.length ? searchLocation : positionToString()
+
+  await getWeather(lookup, 4)
   store.setWeather(weather.value)
   isLoading.value = false
 }
 
 document.addEventListener('visibilitychange', async function () {
   if (!document.hidden) {
-    if (ttl.value < new Date().getTime() && searchLocation.length) {
-      await searchWeather()
-    }
+    await init()
   }
+})
+
+async function init() {
+  await getPosition()
+
+  if (ttl.value < new Date().getTime() && (searchLocation.length || position.value != null)) {
+    await searchWeather()
+  }
+}
+
+onMounted(async () => {
+  await init()
 })
 </script>
 
