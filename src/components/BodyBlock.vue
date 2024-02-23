@@ -2,6 +2,7 @@
 import SearchBox from './SearchBox.vue'
 import CurrentWeather from './CurrentWeather.vue'
 import WeatherLoading from './WeatherLoading.vue'
+import FutureForecast from './FutureForecast.vue'
 import useWeather from '@/composables/weather'
 import useLocation from '@/composables/location'
 import { ref, onMounted } from 'vue'
@@ -30,7 +31,7 @@ async function searchWeather() {
 
   let lookup = searchLocation.length ? searchLocation : positionToString()
 
-  await getWeather(lookup, 4)
+  await getWeather(lookup, 5)
   store.setWeather(weather.value)
   isLoading.value = false
 }
@@ -61,5 +62,6 @@ onMounted(async () => {
   </template>
   <template v-else>
     <CurrentWeather></CurrentWeather>
+    <FutureForecast></FutureForecast>
   </template>
 </template>
