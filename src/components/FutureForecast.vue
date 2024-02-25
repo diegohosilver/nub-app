@@ -13,7 +13,7 @@ const { getRelativeDate } = useDateHelper()
 
 <template>
   <div class="future-forecast">
-    <h3>5-day forecast</h3>
+    <h3>3-day forecast</h3>
 
     <div v-for="item in forecast" :key="item.date" class="future-forecast-item">
       <img class="future-forecast-item--icon" :src="item.icon" />

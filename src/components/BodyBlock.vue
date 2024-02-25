@@ -31,7 +31,7 @@ async function searchWeather() {
 
   let lookup = searchLocation.length ? searchLocation : positionToString()
 
-  await getWeather(lookup, 5)
+  await getWeather(lookup, 3)
   store.setWeather(weather.value)
   isLoading.value = false
 }
