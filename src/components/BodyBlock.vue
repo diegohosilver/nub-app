@@ -18,31 +18,28 @@ const { position, getPosition, positionToString } = useLocation()
 const isLoading = ref(true)
 let searchLocation = ''
 
-async function onSearch(e) {
-  if (!e.length) {
-    return
-  }
-  searchLocation = e
-  await searchWeather()
-}
-
 async function searchWeather() {
-  isLoading.value = true
-
   let lookup = searchLocation.length ? searchLocation : positionToString()
 
   await getWeather(lookup, 3)
   store.setWeather(weather.value)
-  isLoading.value = false
 }
 
-document.addEventListener('visibilitychange', async function () {
-  if (!document.hidden) {
-    await init()
-  }
-})
+async function onSearch(e) {
+  searchLocation = e
 
-async function init() {
+  let task = async () => {
+    if (!searchLocation.length) {
+      await loadData()
+    } else {
+      await searchWeather()
+    }
+  }
+
+  await loadingWrapper(task)
+}
+
+async function loadData() {
   await getPosition()
 
   if (ttl.value < new Date().getTime() && (searchLocation.length || position.value != null)) {
@@ -50,8 +47,24 @@ async function init() {
   }
 }
 
+async function onVisibilityChange() {
+  if (!document.hidden) {
+    await loadData()
+  }
+}
+
+async function loadingWrapper(task) {
+  isLoading.value = true
+
+  await task()
+
+  isLoading.value = false
+}
+
+document.addEventListener('visibilitychange', onVisibilityChange)
+
 onMounted(async () => {
-  await init()
+  await loadingWrapper(loadData)
 })
 </script>
 

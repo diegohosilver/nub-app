@@ -34,7 +34,7 @@ const { getRelativeDate } = useDateHelper()
   margin-right: 12px;
 
   h3 {
-    font-weight: bold;
+    font-weight: bold !important;
   }
 
   &-item {

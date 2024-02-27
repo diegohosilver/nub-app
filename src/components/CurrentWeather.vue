@@ -39,7 +39,7 @@ const { round } = useNumberHelper()
 
   h1,
   h2 {
-    font-weight: bold;
+    font-weight: bold !important;
   }
 }
 </style>

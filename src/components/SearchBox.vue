@@ -30,6 +30,7 @@ input {
   background: none;
   height: 40px;
   width: 100%;
+  font-size: 16px;
 
   &::placeholder {
     font-size: 16px;
