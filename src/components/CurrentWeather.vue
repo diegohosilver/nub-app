@@ -11,11 +11,11 @@ const { round } = useNumberHelper()
 
 <template>
   <div class="current-weather">
-    <h2 class="current-weather--location">{{ location }}</h2>
+    <h2>{{ location }}</h2>
 
-    <h1 class="current-weather--temperature">{{ round(temperature) }}</h1>
+    <h1>{{ round(temperature) }}</h1>
 
-    <h2 class="current-weather--status">{{ status }}</h2>
+    <h2>{{ status }}</h2>
 
     <div class="current-weather--limits">
       <label>H: {{ round(high) }}</label>
@@ -35,6 +35,11 @@ const { round } = useNumberHelper()
     display: flex;
     justify-content: space-between;
     width: 150px;
+  }
+
+  h1,
+  h2 {
+    font-weight: bold;
   }
 }
 </style>

@@ -33,6 +33,10 @@ const { getRelativeDate } = useDateHelper()
   margin-left: 12px;
   margin-right: 12px;
 
+  h3 {
+    font-weight: bold;
+  }
+
   &-item {
     display: flex;
     flex-direction: row;

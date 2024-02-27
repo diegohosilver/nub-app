@@ -28,11 +28,11 @@ watch(
 input {
   border: none;
   background: none;
-  height: 24px;
+  height: 40px;
   width: 100%;
 
   &::placeholder {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   &:focus {
