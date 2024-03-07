@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 html * {
 	font-family: 'Inter';
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: normal;
 }
 
 @keyframes pulse-bg {
@@ -16,4 +19,9 @@ html * {
 	100% {
 		background-color: #ddd;
 	}
+}
+
+.dark-mode {
+	background-color: #121717;
+	color: #FFFFFF;
 }

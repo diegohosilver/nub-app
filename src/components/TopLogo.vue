@@ -11,6 +11,7 @@ const props = defineProps({
 <style scoped>
 h1 {
   margin-left: 12px;
+  margin-right: auto;
   font-weight: bold !important;
 }
 </style>

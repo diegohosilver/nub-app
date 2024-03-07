@@ -54,4 +54,15 @@ input {
     margin-right: 12px;
   }
 }
+
+.dark-mode {
+  .search-box {
+    background-color: #293338;
+    box-shadow: none;
+  }
+
+  input {
+    color: #ffffff;
+  }
+}
 </style>

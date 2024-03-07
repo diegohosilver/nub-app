@@ -7,6 +7,7 @@ export const useWeatherStore = defineStore('weather', () => {
   const status = ref(null)
   const high = ref(null)
   const low = ref(null)
+  const icon = ref(null)
   const ttl = ref(new Date().getTime())
   const forecast = ref(null)
 
@@ -16,6 +17,7 @@ export const useWeatherStore = defineStore('weather', () => {
     status.value = weather.current.condition.text
     high.value = weather.forecast.forecastday[0].day.maxtemp_c
     low.value = weather.forecast.forecastday[0].day.mintemp_c
+    icon.value = weather.current.condition.icon
 
     let now = new Date()
 
